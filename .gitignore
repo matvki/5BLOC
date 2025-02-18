@@ -1,2 +1,14 @@
+# Dépendances Node.js
 node_modules/
+package-lock.json
+
+# Clés et configurations sensibles
 .env
+
+# Dossiers et fichiers générés par Hardhat
+cache/
+artifacts/
+
+# Logs et fichiers temporaires
+*.log
+*.tmp
