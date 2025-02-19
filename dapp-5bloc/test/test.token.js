@@ -22,9 +22,9 @@ describe("GameToken Contract", function () {
     expect(balance).to.equal(mintAmount);
   });
 
-  it("Should not allow non-owners to mint tokens", async () => {
-    const mintAmount = ethers.parseUnits("1000", 18);
-    await expect(gameToken.connect(addr1).mint(addr2.address, mintAmount))
-      .to.be.revertedWith("Ownable: caller is not the owner");
-  });
+ it("Should not allow non-owners to mint tokens", async () => {
+    // Essayer de mint avec addr2, qui n'est pas le propriétaire
+    await expect(gameToken.connect(addr1).mint(addr2.address, ethers.parseUnits("1000", 18)))
+        .to.be.revertedWith("Ownable: caller is not the owner");
+});
 });
