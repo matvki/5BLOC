@@ -108,6 +108,7 @@ Utilise le contrat SkinNFT pour mint des skins et les ajouter à la marketplace.
 Les utilisateurs peuvent acheter des skins en utilisant le token GameToken. Lors de l'achat, les fonds seront transférés à l'adresse du vendeur et le skin sera transféré au nouveau propriétaire.
 Structure des Contrats
 
+```
 GameToken.sol
 Un token ERC-20 qui représente la monnaie de la marketplace. Il est utilisé pour acheter des skins.
 
@@ -116,15 +117,17 @@ Un token ERC-721 représentant les skins. Chaque skin est unique et peut être a
 
 Marketplace.sol
 Le contrat de la marketplace, permettant aux utilisateurs de lister leurs skins à la vente et d'acheter des skins avec le GameToken.
+```
 
 Comptes nécessaires
 
+```
 Compte déployeur : Le compte qui déploie les contrats sur la blockchain. Il doit avoir une clé privée définie dans le fichier .env.
 
 Compte utilisateur : Les utilisateurs de la marketplace qui achètent et vendent des skins. Ils doivent posséder des tokens GameToken pour effectuer des transactions.
 
 Compte administrateur : Le propriétaire des contrats (Ownable) qui a la capacité de gérer certaines fonctions, comme le mint des tokens ou des skins.
-
+```
 Tests
 ---
 Tests Hardhat : les tests intégrés tests les fonctionnalités des contrats sur un réseau local.
