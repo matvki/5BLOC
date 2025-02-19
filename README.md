@@ -13,8 +13,9 @@ Pour exécuter ce projet, tu auras besoin de :
 
     Node.js (version 16.x ou supérieure)
     Hardhat pour le déploiement des contrats intelligents
-    Metamask ou un autre portefeuille Ethereum pour interagir avec le frontend
-    Un compte Ethereum avec des fonds pour payer les frais de gas (mainnet)
+    Metamask pour interagir avec le frontend
+    Un compte Dev Metamask
+    Un compte Pinata
 
 Installation
 1. Cloner le projet
@@ -63,7 +64,7 @@ module.exports = {
 
 5. Déployer les contrats
 
-Utilise Hardhat pour déployer les contrats sur un réseau Ethereum (testnet ou mainnet). Pour cela, exécute le script de déploiement suivant :
+Utilise Hardhat pour déployer les contrats sur un réseau Ethereum (mainnet). Pour cela, exécute le script de déploiement suivant :
 
 ```Bash
 npx hardhat run scripts/deploy.js
@@ -73,23 +74,16 @@ Cela va déployer les trois contrats : GameToken, SkinNFT, et Marketplace. Une f
 
 6. Configuration de Pinata (IPFS)
 
-Pour stocker les métadonnées des skins sur IPFS, tu peux utiliser Pinata. Crée un compte sur Pinata et récupère ton API key et secret. Configure-le dans ton projet en ajoutant ces informations dans le fichier .env :
+Pour stocker les métadonnées des skins sur IPFS, on utilise Pinata. Crée un compte sur Pinata et récupère ton API key et secret. Configure-le dans ton projet en ajoutant ces informations dans le fichier .env :
 ```
-PINATA_API_KEY="ton-pinata-api-key"
-PINATA_SECRET_KEY="ton-pinata-secret-key"
+PINATA_API_KEY={Ton Pinata API key}
+PINATA_SECRET_KEY={Ton Pinata secret key}
 ```
 Ensuite, tu peux utiliser l'API Pinata pour uploader les images et métadonnées des skins sur IPFS. Assure-toi que tes métadonnées sont bien associées aux skins via leurs URIs dans le contrat SkinNFT.
 
 7. Lancer le frontend
 
-    Développer le frontend : Utilise un framework comme React ou Next.js pour interagir avec les contrats. Dans le frontend, tu peux récupérer les skins à partir de la blockchain, afficher les détails, et permettre aux utilisateurs d'acheter des skins via le contrat Marketplace.
-
-    Installer les dépendances frontend : Si tu utilises React, tu peux installer les dépendances nécessaires avec :
-    ```Bash
-    npm install react react-dom ethers
-    ```
-
-Lancer le serveur de développement : Si tu utilises create-react-app ou un autre framework, démarre le serveur de développement :
+Lancer le serveur de développement : 
 ```Bash
     npm start
 ```

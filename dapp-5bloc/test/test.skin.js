@@ -13,7 +13,7 @@ describe("SkinNFT Contract", function () {
   });
 
   it("Should mint a skin and associate metadata", async () => {
-    const tokenURI = "https://ipfs.io/ipfs/skin1";
+    const tokenURI = "https://white-accused-sole-921.mypinata.cloud/ipfs/bafkreig5gxwqj5h4vsym4ap5fnbj5qo3uyitrwajcbb6w65iggakiy2qyy";
     const rarity = "Epic";
     const value = "1000 tokens";
 
