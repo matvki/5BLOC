@@ -66,7 +66,7 @@ module.exports = {
 Utilise Hardhat pour déployer les contrats sur un réseau Ethereum (testnet ou mainnet). Pour cela, exécute le script de déploiement suivant :
 
 ```Bash
-npx hardhat run scripts/deploy.js --network rinkeby
+npx hardhat run scripts/deploy.js
 ```
 
 Cela va déployer les trois contrats : GameToken, SkinNFT, et Marketplace. Une fois le déploiement terminé, tu verras les adresses des contrats dans la console.
