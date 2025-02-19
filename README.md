@@ -83,13 +83,23 @@ Ensuite, tu peux utiliser l'API Pinata pour uploader les images et métadonnées
 
 7. Lancer le frontend
 
-Lancer le serveur de développement : 
+Pour ça tu dois aller dans le dossier `frontend` du projet
+```Bash
+cd frontend
+```
+
+Puis tu dois installer les dependance npm via:
+```Bash
+npm install
+```
+
+Pour enfin lancer le serveur node : 
 ```Bash
     npm start
 ```
 
 8. Interagir avec la DApp
-Une fois que le frontend est lancé, tu peux interagir avec la marketplace directement depuis ton navigateur. Assure-toi que tu es connecté à Metamask et que tu as sélectionné le bon réseau (par exemple, Rinkeby pour les tests).
+Une fois que le frontend est lancé, tu peux interagir avec la marketplace directement depuis ton navigateur. Assure-toi que tu es connecté à Metamask et que tu as sélectionné le bon réseau.
 
 9. Ajouter des skins
 Utilise le contrat SkinNFT pour mint des skins et les ajouter à la marketplace. Tu peux utiliser les fonctions mintSkin dans SkinNFT pour créer de nouveaux skins et listSkin dans Marketplace pour les lister à la vente.
@@ -97,21 +107,20 @@ Utilise le contrat SkinNFT pour mint des skins et les ajouter à la marketplace.
 10. Acheter des skins
 Les utilisateurs peuvent acheter des skins en utilisant le token GameToken. Lors de l'achat, les fonds seront transférés à l'adresse du vendeur et le skin sera transféré au nouveau propriétaire.
 Structure des Contrats
+
 GameToken.sol
-
 Un token ERC-20 qui représente la monnaie de la marketplace. Il est utilisé pour acheter des skins.
+
 SkinNFT.sol
-
 Un token ERC-721 représentant les skins. Chaque skin est unique et peut être acheté/vendu sur la marketplace.
-Marketplace.sol
 
+Marketplace.sol
 Le contrat de la marketplace, permettant aux utilisateurs de lister leurs skins à la vente et d'acheter des skins avec le GameToken.
+
 Comptes nécessaires
 
 Compte déployeur : Le compte qui déploie les contrats sur la blockchain. Il doit avoir une clé privée définie dans le fichier .env.
-
 Compte utilisateur : Les utilisateurs de la marketplace qui achètent et vendent des skins. Ils doivent posséder des tokens GameToken pour effectuer des transactions.
-
 Compte administrateur : Le propriétaire des contrats (Ownable) qui a la capacité de gérer certaines fonctions, comme le mint des tokens ou des skins.
 
 Tests
