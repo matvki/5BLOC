@@ -110,15 +110,15 @@ Marketplace.sol
 Le contrat de la marketplace, permettant aux utilisateurs de lister leurs skins à la vente et d'acheter des skins avec le GameToken.
 Comptes nécessaires
 
-    Compte déployeur : Le compte qui déploie les contrats sur la blockchain. Il doit avoir une clé privée définie dans le fichier .env.
+Compte déployeur : Le compte qui déploie les contrats sur la blockchain. Il doit avoir une clé privée définie dans le fichier .env.
 
-    Compte utilisateur : Les utilisateurs de la marketplace qui achètent et vendent des skins. Ils doivent posséder des tokens GameToken pour effectuer des transactions.
+Compte utilisateur : Les utilisateurs de la marketplace qui achètent et vendent des skins. Ils doivent posséder des tokens GameToken pour effectuer des transactions.
 
-    Compte administrateur : Le propriétaire des contrats (Ownable) qui a la capacité de gérer certaines fonctions, comme le mint des tokens ou des skins.
+Compte administrateur : Le propriétaire des contrats (Ownable) qui a la capacité de gérer certaines fonctions, comme le mint des tokens ou des skins.
 
 Tests
-
-    Tests Hardhat : Utilise les tests intégrés pour tester les fonctionnalités des contrats sur un réseau local.
+---
+Tests Hardhat : Utilise les tests intégrés pour tester les fonctionnalités des contrats sur un réseau local.
 ```Bash
 npx hardhat test
 ```
