@@ -1,4 +1,3 @@
-// test/SkinNFT.js
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
@@ -9,7 +8,7 @@ describe("SkinNFT Contract", function () {
     [owner, addr1, addr2] = await ethers.getSigners();
     SkinNFT = await ethers.getContractFactory("SkinNFT");
     skinNFT = await SkinNFT.deploy();
-    await skinNFT.deployed();
+    await skinNFT.waitForDeployment(); // Correction ici
   });
 
   it("Should mint a skin and associate metadata", async () => {
@@ -17,7 +16,11 @@ describe("SkinNFT Contract", function () {
     const rarity = "Epic";
     const value = "1000 tokens";
 
-    const newSkinId = await skinNFT.mintSkin(addr1.address, tokenURI, rarity, value);
+    // Correction ici : Attendre la transaction et récupérer l'événement
+    const tx = await skinNFT.mintSkin(addr1.address, tokenURI, rarity, value);
+    const receipt = await tx.wait();
+    const newSkinId = receipt.logs[0].args.tokenId; // Assure-toi que ton contrat émet cet événement
+
     const skinOwner = await skinNFT.ownerOf(newSkinId);
     const skinURI = await skinNFT.tokenURI(newSkinId);
     const skinRarity = await skinNFT.getRarity(newSkinId);
@@ -34,8 +37,9 @@ describe("SkinNFT Contract", function () {
     const skinId = 1;
 
     await skinNFT.setCooldown(skinId, cooldownTime);
-    const cooldown = await skinNFT.getCooldown(skinId);
+    await ethers.provider.send("evm_mine"); // Simuler un bloc si nécessaire
 
+    const cooldown = await skinNFT.getCooldown(skinId);
     expect(cooldown).to.equal(cooldownTime);
   });
 });

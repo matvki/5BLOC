@@ -11,17 +11,17 @@ describe("Marketplace Contract", function () {
     // Déployer le contrat GameToken
     GameToken = await ethers.getContractFactory("GameToken");
     gameToken = await GameToken.deploy();
-    await gameToken.deployed();
+    await gameToken.waitForDeployment();
 
     // Déployer le contrat SkinNFT
     skinNFT = await ethers.getContractFactory("SkinNFT");
     nft = await skinNFT.deploy();
-    await nft.deployed();
+    await nft.waitForDeployment();
 
     // Déployer le contrat Marketplace
     Marketplace = await ethers.getContractFactory("Marketplace");
     marketplace = await Marketplace.deploy(nft.address, gameToken.address);
-    await marketplace.deployed();
+    await marketplace.waitForDeployment();
 
     // Mint un skin pour addr1
     const tokenURI = "https://white-accused-sole-921.mypinata.cloud/ipfs/bafkreig5gxwqj5h4vsym4ap5fnbj5qo3uyitrwajcbb6w65iggakiy2qyy";
