@@ -20,28 +20,32 @@ Installation
 1. Cloner le projet
 
 Clone le projet depuis GitHub en utilisant la commande suivante :
-
+```Bash
 git clone https://github.com/ton-utilisateur/marketplace-skins.git
 cd marketplace-skins
+```
 
 2. Installer les dépendances
 
 Installe les dépendances nécessaires avec npm :
-
+```Bash
 npm install
+```
 
 3. Configurer l'environnement
 
 Crée un fichier .env à la racine de ton projet et ajoute tes clés API et informations de connexion. Par exemple :
 
+```
 ETHERSCAN_API_KEY="ton-etherscan-api-key"
 INFURA_API_KEY="ton-infura-api-key"
 PRIVATE_KEY="ta-clé-privée-pour-le-deploiement"
+```
 
 4. Configurer Hardhat
 
-Dans le fichier hardhat.config.js, assure-toi que les réseaux sont correctement configurés pour ton environnement (testnet/mainnet). Voici un exemple de configuration pour un testnet :
-
+Dans le fichier `hardhat.config.js`, assure-toi que les réseaux sont correctement configurés pour ton environnement (testnet/mainnet). Voici un exemple de configuration pour un testnet :
+```
 module.exports = {
   solidity: "0.8.18",
   networks: {
@@ -51,22 +55,25 @@ module.exports = {
     }
   }
 };
+```
 
 5. Déployer les contrats
 
 Utilise Hardhat pour déployer les contrats sur un réseau Ethereum (testnet ou mainnet). Pour cela, exécute le script de déploiement suivant :
 
+```Bash
 npx hardhat run scripts/deploy.js --network rinkeby
+```
 
 Cela va déployer les trois contrats : GameToken, SkinNFT, et Marketplace. Une fois le déploiement terminé, tu verras les adresses des contrats dans la console.
 
 6. Configuration de Pinata (IPFS)
 
 Pour stocker les métadonnées des skins sur IPFS, tu peux utiliser Pinata. Crée un compte sur Pinata et récupère ton API key et secret. Configure-le dans ton projet en ajoutant ces informations dans le fichier .env :
-
+```
 PINATA_API_KEY="ton-pinata-api-key"
 PINATA_SECRET_KEY="ton-pinata-secret-key"
-
+```
 Ensuite, tu peux utiliser l'API Pinata pour uploader les images et métadonnées des skins sur IPFS. Assure-toi que tes métadonnées sont bien associées aux skins via leurs URIs dans le contrat SkinNFT.
 
 7. Lancer le frontend
@@ -74,12 +81,14 @@ Ensuite, tu peux utiliser l'API Pinata pour uploader les images et métadonnées
     Développer le frontend : Utilise un framework comme React ou Next.js pour interagir avec les contrats. Dans le frontend, tu peux récupérer les skins à partir de la blockchain, afficher les détails, et permettre aux utilisateurs d'acheter des skins via le contrat Marketplace.
 
     Installer les dépendances frontend : Si tu utilises React, tu peux installer les dépendances nécessaires avec :
-
+    ```Bash
     npm install react react-dom ethers
+    ```
 
 Lancer le serveur de développement : Si tu utilises create-react-app ou un autre framework, démarre le serveur de développement :
-
+```Bash
     npm start
+```
 
 8. Interagir avec la DApp
 Une fois que le frontend est lancé, tu peux interagir avec la marketplace directement depuis ton navigateur. Assure-toi que tu es connecté à Metamask et que tu as sélectionné le bon réseau (par exemple, Rinkeby pour les tests).
@@ -110,5 +119,6 @@ Comptes nécessaires
 Tests
 
     Tests Hardhat : Utilise les tests intégrés pour tester les fonctionnalités des contrats sur un réseau local.
-
+```Bash
 npx hardhat test
+```
