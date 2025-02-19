@@ -98,6 +98,9 @@ Pour enfin lancer le serveur node :
 npm start
 ```
 
+/!\ Important /!\ 
+Pour arreter les serveur node, tu pex faire `CTRL + C`, mais pour moi il a fallu que j'aille dans le gestionnaire des tâches pour 'kill' la tâche node en cours. 
+
 8. Interagir avec la DApp
 Une fois que le frontend est lancé, tu peux interagir avec la marketplace directement depuis ton navigateur. Assure-toi que tu es connecté à Metamask et que tu as sélectionné le bon réseau.
 
