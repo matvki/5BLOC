@@ -34,7 +34,7 @@ npm install
 
 3. Configurer l'environnement
 
-Crée un fichier .env à la racine de ton projet et ajoute tes clés API et informations de connexion. Par exemple :
+Créer un fichier .env où tu es dans le projet et ajoute tes clés API et informations de connexion. Par exemple :
 
 ```
 ETHERSCAN_API_KEY="ton-etherscan-api-key"
