@@ -11,6 +11,7 @@ contract GameToken is ERC20, Ownable {
         _mint(msg.sender, INITIAL_SUPPLY);
     }
 
+    // Fonction pour "minter" des tokens, uniquement accessible par le propriétaire
     function mint(address to, uint256 amount) external onlyOwner {
         _mint(to, amount);
     }
