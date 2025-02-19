@@ -8,7 +8,7 @@ describe("SkinNFT Contract", function () {
     [owner, addr1, addr2] = await ethers.getSigners();
     SkinNFT = await ethers.getContractFactory("SkinNFT");
     skinNFT = await SkinNFT.deploy();
-    await skinNFT.waitForDeployment(); // Correction ici
+    await skinNFT.waitForDeployment(); 
   });
 
   it("Should mint a skin and associate metadata", async () => {

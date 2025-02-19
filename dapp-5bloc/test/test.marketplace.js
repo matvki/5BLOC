@@ -19,6 +19,7 @@ describe("Marketplace Contract", function () {
     await nft.waitForDeployment();
 
     // Déployer le contrat Marketplace
+    
     Marketplace = await ethers.getContractFactory("Marketplace");
     marketplace = await Marketplace.deploy(nft.address, gameToken.address);
     await marketplace.waitForDeployment();
