@@ -21,8 +21,8 @@ Installation
 
 Clone le projet depuis GitHub en utilisant la commande suivante :
 ```Bash
-git clone https://github.com/ton-utilisateur/marketplace-skins.git
-cd marketplace-skins
+git clone https://github.com/matvki/5BLOC
+cd 5BLOC/dapp-5bloc
 ```
 
 2. Installer les dépendances
