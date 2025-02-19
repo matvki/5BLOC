@@ -21,7 +21,7 @@ contract Marketplace is Ownable {
     event SkinListed(uint256 indexed skinId, address indexed seller, uint256 price);
     event SkinPurchased(uint256 indexed skinId, address indexed buyer);
 
-    constructor(address _skinNFT, address _gameToken) {
+    constructor(address _skinNFT, address _gameToken) Ownable(address(msg.sender)) {
         skinNFT = IERC721(_skinNFT);
         gameToken = IERC20(_gameToken);
     }

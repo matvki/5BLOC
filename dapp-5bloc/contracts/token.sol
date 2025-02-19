@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract GameToken is ERC20, Ownable {
     uint256 public constant INITIAL_SUPPLY = 1000000 * (10 ** 18);
 
-    constructor() ERC20("GameToken", "GTKN") {
+    constructor() ERC20("GameToken", "GTKN") Ownable(address(msg.sender)) {
         _mint(msg.sender, INITIAL_SUPPLY);
     }
 

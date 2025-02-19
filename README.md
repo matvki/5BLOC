@@ -14,7 +14,7 @@ Pour exécuter ce projet, tu auras besoin de :
     Node.js (version 16.x ou supérieure)
     Hardhat pour le déploiement des contrats intelligents
     Metamask ou un autre portefeuille Ethereum pour interagir avec le frontend
-    Un compte Ethereum avec des fonds pour payer les frais de gas (sur un testnet ou mainnet)
+    Un compte Ethereum avec des fonds pour payer les frais de gas (mainnet)
 
 Installation
 1. Cloner le projet
@@ -37,23 +37,27 @@ npm install
 Créer un fichier .env où tu es dans le projet et ajoute tes clés API et informations de connexion. Par exemple :
 
 ```
-ETHERSCAN_API_KEY="ton-etherscan-api-key"
-INFURA_API_KEY="ton-infura-api-key"
-PRIVATE_KEY="ta-clé-privée-pour-le-deploiement"
+API_KEY={Clé API du metamask de test}
+PRIVATE_KEY={Clé du portfeuille Metamask}
 ```
 
 4. Configurer Hardhat
 
 Dans le fichier `hardhat.config.js`, assure-toi que les réseaux sont correctement configurés pour ton environnement (testnet/mainnet). Voici un exemple de configuration pour un testnet :
-```
+```JS
+require("@nomicfoundation/hardhat-toolbox");
+require("dotenv").config();
+
+/** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
-  solidity: "0.8.18",
+  solidity: "0.8.28",
   networks: {
-    rinkeby: {
-      url: `https://rinkeby.infura.io/v3/${process.env.INFURA_API_KEY}`,
-      accounts: [`0x${process.env.PRIVATE_KEY}`]
-    }
-  }
+    hardhat: {},
+    goerli: {
+      url: `https://mainnet.infura.io/v3/${process.env.API_KEY}`,
+      accounts: [process.env.PRIVATE_KEY],
+    },
+  },
 };
 ```
 

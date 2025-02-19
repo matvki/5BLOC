@@ -4,29 +4,27 @@ async function main() {
     const [deployer] = await hre.ethers.getSigners();
     console.log("Deploying contracts with the account:", deployer.address);
 
-    // Vérifie le solde du compte pour s'assurer qu'il a assez de funds pour payer le gas
-    const balance = await deployer.getBalance();
-    console.log("Deployer balance:", hre.ethers.utils.formatEther(balance));
+    // Vérifie le solde du compte
+    const balance = await hre.ethers.provider.getBalance(deployer.address);
+    console.log("Deployer balance:", hre.ethers.formatEther(balance));
 
     // Déploiement du token ERC-20 (GameToken)
     const GameToken = await hre.ethers.getContractFactory("GameToken");
     const gameToken = await GameToken.deploy();
-    await gameToken.deployed();
-    console.log("GameToken deployed to:", gameToken.address);
+    await gameToken.waitForDeployment();
+    console.log("GameToken deployed to:", await gameToken.getAddress());
 
     // Déploiement du NFT ERC-721 (SkinNFT)
     const SkinNFT = await hre.ethers.getContractFactory("SkinNFT");
     const skinNFT = await SkinNFT.deploy();
-    await skinNFT.deployed();
-    console.log("SkinNFT deployed to:", skinNFT.address);
+    await skinNFT.waitForDeployment();
+    console.log("SkinNFT deployed to:", await skinNFT.getAddress());
 
     // Déploiement de la marketplace (Marketplace)
     const Marketplace = await hre.ethers.getContractFactory("Marketplace");
-    const marketplace = await Marketplace.deploy(skinNFT.address, gameToken.address);
-    await marketplace.deployed();
-    console.log("Marketplace deployed to:", marketplace.address);
-
-    // Si nécessaire, tu peux initialiser certains paramètres ou appeler des fonctions supplémentaires ici.
+    const marketplace = await Marketplace.deploy(await skinNFT.getAddress(), await gameToken.getAddress());
+    await marketplace.waitForDeployment();
+    console.log("Marketplace deployed to:", await marketplace.getAddress());
 
     console.log("Déploiement terminé avec succès.");
 }

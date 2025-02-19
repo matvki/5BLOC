@@ -7,7 +7,7 @@ module.exports = {
   networks: {
     hardhat: {},
     goerli: {
-      url: `https://eth-goerli.g.alchemy.com/v2/${process.env.API_KEY}`,
+      url: `https://mainnet.infura.io/v3/${process.env.API_KEY}`,
       accounts: [process.env.PRIVATE_KEY],
     },
   },

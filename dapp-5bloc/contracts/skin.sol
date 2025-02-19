@@ -10,7 +10,7 @@ contract SkinNFT is ERC721URIStorage, Ownable {
     mapping(uint256 => string) public values;    // Valeur associée au skin
     mapping(uint256 => uint256) public cooldowns; // Cooldown entre transactions
 
-    constructor() ERC721("SkinNFT", "SNFT") {}
+    constructor() ERC721("SkinNFT", "SNFT") Ownable(address(msg.sender)) {}
 
     // Fonction de minting d'un skin avec ajout des métadonnées (rareté et valeur)
     function mintSkin(address player, string memory tokenURI, string memory rarity, string memory value) external onlyOwner returns (uint256) {
